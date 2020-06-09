@@ -5,13 +5,13 @@ package pl.vm.library.exception;
  */
 public class ParameterValidationException extends RuntimeException {
 
-	private static final long serialVersionUID = -779041494072937362L;
+    private static final long serialVersionUID = -779041494072937362L;
 
-	public ParameterValidationException() {
-		super("One of the input parameters is not correct");
-	}
+    public ParameterValidationException() {
+        super("One of the input parameters is not correct");
+    }
 
-	public ParameterValidationException(String message) {
-		super(message);
-	}
+    public ParameterValidationException(String message) {
+        super(message);
+    }
 }

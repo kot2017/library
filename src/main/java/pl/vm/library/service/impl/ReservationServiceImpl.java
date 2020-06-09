@@ -1,24 +1,17 @@
 package pl.vm.library.service.impl;
 
-import javax.transaction.Transactional;
-
 import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import pl.vm.library.entity.Book;
 import pl.vm.library.entity.Reservation;
 import pl.vm.library.entity.User;
 import pl.vm.library.exception.ParameterValidationException;
-import pl.vm.library.repository.BookRepository;
 import pl.vm.library.repository.ReservationRepository;
-import pl.vm.library.repository.UserRepository;
-import pl.vm.library.service.BookService;
 import pl.vm.library.service.ReservationService;
-import pl.vm.library.service.UserService;
 import pl.vm.library.to.ReservationTo;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -34,23 +27,10 @@ public class ReservationServiceImpl implements ReservationService {
 
     private ModelMapper mapper = new ModelMapper();
 
-    @Autowired
-    private BookService bookService;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private BookRepository bookRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-
     long MAX_TIME = 30;
 
 
-    // TODO Create reservation.
+    //  Create reservation.
     @Override
     public ReservationTo create(ReservationTo reservationTo) {
         validateNewReservation(reservationTo);
@@ -58,25 +38,6 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation reservationEntity = mapper.map(reservationTo, Reservation.class);
         reservationRepository.save(reservationEntity);
 
-        return mapper.map(reservationEntity, ReservationTo.class);
-    }
-
-
-    @Override
-    public ReservationTo create(Long userId, Long bookId, Date dateFrom, Date dateTo) {
-        validateNewReservation(userId, bookId, dateFrom, dateTo);
-        Optional<User> user = userRepository.findById(userId);
-        Optional<Book> book = bookRepository.findById(bookId);
-        ReservationTo reservationTo = new ReservationTo();
-
-        reservationTo.setFromDate(dateFrom);
-        reservationTo.setToDate(dateTo);
-
-        Reservation reservationEntity = mapper.map(reservationTo, Reservation.class);
-        reservationEntity.setBook(book.get());
-        reservationEntity.setUser(user.get());
-
-        reservationRepository.save(reservationEntity);
         return mapper.map(reservationEntity, ReservationTo.class);
     }
 
@@ -153,24 +114,7 @@ public class ReservationServiceImpl implements ReservationService {
         }
     }
 
-    /**
-     * @param userId
-     * @param bookId
-     * @param fromDate
-     * @param toDate
-     */
-    private void validateNewReservation(Long userId, Long bookId, Date fromDate, Date toDate) {
 
-        validateReservationTime(fromDate, toDate);
-
-        if (userId == null) {
-            throw new ParameterValidationException("When creating new Reservation, the userID should be not null.");
-        }
-        if (bookId == null) {
-            throw new ParameterValidationException("When creating new Reservation, the bookId should be not null.");
-        }
-
-    }
 
 
     /**

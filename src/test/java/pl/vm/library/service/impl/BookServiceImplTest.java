@@ -15,7 +15,6 @@ import pl.vm.library.repository.ReservationRepository;
 import pl.vm.library.repository.UserRepository;
 
 
-
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class BookServiceImplTest {

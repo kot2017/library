@@ -1,6 +1,8 @@
 # library
 Library
 
+Date format in REST Reservation "dd.MM.yyyy"
+
 ## Integration test for method  delete book
 
 1. Checking, which books have reservation:

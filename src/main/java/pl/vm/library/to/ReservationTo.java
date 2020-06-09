@@ -1,12 +1,5 @@
 package pl.vm.library.to;
 
-import pl.vm.library.entity.Book;
-import pl.vm.library.entity.User;
-
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -16,77 +9,76 @@ import java.util.Date;
  */
 public class ReservationTo implements Serializable {
 
-	private static final long serialVersionUID = -60690548233543094L;
+    private static final long serialVersionUID = -60690548233543094L;
 
-	private Long id;
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	// TODO You can add fields which you need to finish the task.
-
-
-	private Long userId;
+    // TODO You can add fields which you need to finish the task.
 
 
-	private Long bookId;
+    private Long userId;
 
 
-	@NotNull
-	private Date fromDate;
+    private Long bookId;
 
 
-	@NotNull
-	private Date toDate;
+    @NotNull
+    private Date fromDate;
 
 
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-	public Long getBookId() {
-		return bookId;
-	}
-
-	public void setBookId(Long bookId) {
-		this.bookId = bookId;
-	}
-
-	public Date getFromDate() {
-		return fromDate;
-	}
-
-	public void setFromDate(Date fromDate) {
-		this.fromDate = fromDate;
-	}
-
-	public Date getToDate() {
-		return toDate;
-	}
-
-	public void setToDate(Date toDate) {
-		this.toDate = toDate;
-	}
+    @NotNull
+    private Date toDate;
 
 
+    public Long getUserId() {
+        return userId;
+    }
 
-	@Override
-	public String toString() {
-		return "ReservationTo{" +
-				"id=" + id +
-				", userId=" + userId +
-				", bookId=" + bookId +
-				", fromDate=" + fromDate +
-				", toDate=" + toDate +
-				'}';
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
+    public Date getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+
+
+    @Override
+    public String toString() {
+        return "ReservationTo{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", bookId=" + bookId +
+                ", fromDate=" + fromDate +
+                ", toDate=" + toDate +
+                '}';
+    }
 }

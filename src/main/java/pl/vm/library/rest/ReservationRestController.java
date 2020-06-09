@@ -5,12 +5,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
 import pl.vm.library.service.ReservationService;
-import pl.vm.library.to.BookTo;
 import pl.vm.library.to.ReservationTo;
 
-import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 
@@ -19,23 +16,10 @@ import java.util.List;
 public class ReservationRestController {
 
 
-
-
     @Autowired
     private ReservationService reservationService;
 
-    // TODO Create reservation.
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ReservationTo create(
-            @RequestParam("userId") Long userId,
-            @RequestParam("bookId") Long bookId,
-            @RequestParam("dateFrom") @DateTimeFormat(pattern = "dd.MM.yyyy") Date dateFrom,
-            @RequestParam("dateTo") @DateTimeFormat(pattern = "dd.MM.yyyy") Date dateTo
-    ) {
-        return reservationService.create(userId, bookId, dateFrom, dateTo);
-    }
-
+    //   Create reservation.
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ReservationTo create(@RequestBody ReservationTo reservationTo) {
@@ -43,7 +27,7 @@ public class ReservationRestController {
     }
 
 
-    // TODO Extend reservation - change the "toDate" Date in the given reservation
+    //   Extend reservation - change the "toDate" Date in the given reservation
     @ResponseStatus(HttpStatus.CREATED)
     @PutMapping(value = "/{reservationId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ReservationTo extendReservation(

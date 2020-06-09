@@ -6,13 +6,13 @@ package pl.vm.library.exception;
  */
 public class EntityWithProvidedIdNotFoundException extends RuntimeException {
 
-	private static final long serialVersionUID = 518405525882996153L;
+    private static final long serialVersionUID = 518405525882996153L;
 
-	public EntityWithProvidedIdNotFoundException() {
-		super("The Entity with the given ID was not found.");
-	}
+    public EntityWithProvidedIdNotFoundException() {
+        super("The Entity with the given ID was not found.");
+    }
 
-	public EntityWithProvidedIdNotFoundException(String message) {
-		super(message);
-	}
+    public EntityWithProvidedIdNotFoundException(String message) {
+        super(message);
+    }
 }
